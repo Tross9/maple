@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
+             xmlns:buttons="clr-namespace:MapleSugar.Views.Buttons" 
+             xmlns:local="clr-namespace:MapleSugar.PageModels"
+             x:Class="MapleSugar.Pages.TreeInfoPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <local:TreeInfoPageModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="45">
+                <Entry Placeholder="StatusMsg"  Text="{Binding StatusMsg}" FontSize="15"  Margin="150,0,0,0" 
+                       HorizontalTextAlignment="Center" TextColor="Red" HorizontalOptions="Center" WidthRequest="500"
+                           IsVisible="True"/>
+                <buttons:BindableButton BindingContext="{Binding  ClosePageClicked}"
+                                        HorizontalOptions="EndAndExpand"  
+                                        BackgroundColor="White" TextColor="Black" BorderWidth="1"  BorderColor="Black" />
+            </StackLayout>
+            <StackLayout BackgroundColor="{StaticResource PrimaryHeaderColor}"  >
+                <Label Text="Tree Info Data" HorizontalOptions="CenterAndExpand" FontSize="20"
+                       TextColor="White"/>
+
+                <!-- Tree Number Info -->
+                <StackLayout Orientation="Horizontal" >
+                    <Entry Placeholder="Sector" TextColor="White" Text="{Binding Sector}" Keyboard="Numeric" WidthRequest="70"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="tree#" TextColor="White" Text="{Binding TreeNumber}" Keyboard="Numeric" WidthRequest="70"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="Subtree#" TextColor="White" Text="{Binding SubTreeNumber}" Keyboard="Numeric" WidthRequest="70"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <Entry Placeholder="SubLetter" TextColor="White" Text="{Binding TreeSubLetter}" WidthRequest="70"  FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <Entry Placeholder="Location" TextColor="White" Text="{Binding TreeLocation}" HorizontalTextAlignment="Center" WidthRequest="70"  FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="Circumference" TextColor="White" Text="{Binding Circumference}" Keyboard="Numeric" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <!-- map grid location -->
+                    <Entry Placeholder="GridX" TextColor="White" Text="{Binding GridX}" Keyboard="Numeric" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="GridY" TextColor="White" Text="{Binding GridY}" Keyboard="Numeric" HorizontalTextAlignment="Center" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+                    <!-- Long and Lat-->
+                    <Label Text="44.45" HorizontalOptions="End" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
+                    <Entry Placeholder="LatSec" TextColor="White" Text="{Binding LatSec}" Keyboard="Numeric" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Text="68.53" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold" />
+                    <Entry Placeholder="LonSec" TextColor="White" Text="{Binding LonSec}" Keyboard="Numeric" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                    <!-- Shared Collection container -->
+                    <Entry Placeholder="SharedContainer" TextColor="White" Text="{Binding TreeCombineWith}" Keyboard="Numeric" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="Container" TextColor="White" Text="{Binding Container}" WidthRequest="70" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="Comments" TextColor="White" Text="{Binding Comments}" WidthRequest="200" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"  >
+                    <!-- Yes / no check boxes -->
+                    <Label Text="Reprint Tag" TextColor="White"  WidthRequest="70" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="15" Margin="90,0,0,0" FontAttributes="Bold" />
+                    <CheckBox IsChecked="{Binding TreeReprintTag}"/>
+                    <Label Text="Tap Tube Tag"  TextColor="White" WidthRequest="70" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="15"   Margin="20,0,0,0" FontAttributes="Bold" />
+                    <CheckBox IsChecked="{Binding TreeTapTube}" />
+                    <Label Text="Tapped"  TextColor="White"  WidthRequest="70"  HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="15" Margin="20,0,0,0" FontAttributes="Bold" />
+                    <CheckBox IsChecked="{Binding TreeTapped}"  />
+                    <!--   save button space   -->
+                    <Label Text="[" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="30" Margin="60,0,0,0"/>
+                    <Label Text="Clear Tree Data"  TextColor="White"  WidthRequest="70"  HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="15"  FontAttributes="Bold"  />
+                    <CheckBox IsChecked="{Binding ClearTreeData}"   />
+                    <buttons:BindableButton BindingContext="{Binding SaveLocationDataModel }"
+                                        HorizontalOptions="Fill"  
+                                        BackgroundColor="White" 
+                                        IsEnabled="False"
+                                        IsVisible="True"
+                                        Margin="30,0,0,0">
+                    </buttons:BindableButton>
+                    <Label Text="]" HorizontalTextAlignment="Center" HorizontalOptions="Fill" FontSize="30"/>
+                </StackLayout>
+                <!-- list veiw header -->
+                <StackLayout Orientation="Horizontal" HeightRequest="55">
+                    <Label Text="Tree Number" HorizontalOptions="CenterAndExpand"  
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text="Sub Number" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text="Sub Letter" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text=" Location" HorizontalOptions="CenterAndExpand"  
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text="Circumference" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" />
+                    <Label Text="Lat Sec" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text="Lon Sec" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" WidthRequest="70"/>
+                    <Label Text="Reprint Tag" HorizontalOptions="CenterAndExpand"  
+                           TextColor="White" />
+                    <Label Text="Tap Tube" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" />
+                    <Label Text="Combine With" HorizontalOptions="CenterAndExpand" 
+                           TextColor="White" WidthRequest="70"/>
+                </StackLayout>
+            </StackLayout>
+            <!-- list view data -->
+            <ListView ItemsSource="{Binding WorkTreeLocationItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding WorkSector}"      
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeNumber}"      
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkSubTreeNumber}"                       
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeSubLetter}"   
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeLocation}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkCircumference}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeLatSec}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeLonSec}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkReprintTag}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTapTube}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding WorkTreeCombineWith}"  
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontAttributes="Bold"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+

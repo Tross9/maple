@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Maui.Controls" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="ReactiveUI" Version="20.1.63" />
+    <PackageVersion Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageVersion Include="TinyIoC" Version="1.3.0" />
+  </ItemGroup>
+</Project>

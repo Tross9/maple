@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Button xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             Text="{Binding Text}"
+             IsVisible="{Binding IsVisible}"
+             IsEnabled="{Binding IsEnabled}"             
+             Command="{Binding Command}"
+             CornerRadius="15"
+             BorderWidth="2"  
+             BorderColor="Black" 
+             BackgroundColor="White" 
+             x:Class="MapleSugar.Views.Buttons.BindableButton"/>

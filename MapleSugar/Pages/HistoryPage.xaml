@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+            xmlns:local="clr-namespace:MapleSugar.PageModels"
+            xmlns:buttons="clr-namespace:MapleSugar.Views.Buttons" 
+            x:Class="MapleSugar.Pages.HistoryPage"             
+            NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:HistoryPageModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="45" >
+                <Label Text="History List" HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
+                <buttons:BindableButton BindingContext="{Binding  Load_Button_Clicked}"
+                                        HorizontalOptions="CenterAndExpand" WidthRequest="100"
+                                        BackgroundColor="White" TextColor="Black" BorderWidth="1"  BorderColor="Black" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="25" BackgroundColor="{StaticResource PrimaryHeaderColor}"  >
+                <Label Text="Year" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Collected" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Boiled" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+                <Label Text="finished" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Loss" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+                <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+                <Label Text="Units" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            </StackLayout>
+
+            <!-- list view data -->
+            <ListView ItemsSource="{Binding HistoryItems}" >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding CollectionYear}"     
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Amountc}"                               
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Amountb}"  
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Amountf}"  
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Amountl}"  
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding Unit}"  
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            x:Class="MapleSugar.Pages.SplashPage"
+            xmlns:Image="clr-namespace:MapleSugar"
+            NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry  Text="{Binding StatusMsg}" FontSize="15"  Margin="50,20,0,0" 
+                       HorizontalTextAlignment="Center" TextColor="Red" HorizontalOptions="Center" WidthRequest="500"
+                           IsVisible="True"/>
+            <Frame BorderColor="Wheat" CornerRadius="20"      
+               HasShadow="True">
+                <Image Source="{Image:ImageResource MapleSugar.Images.MapleSyrup.jpg}" 
+                   Margin="0,50,0,0"  >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                         Command="{Binding SplashScreenCommand}"
+                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+                </Image>  
+            </Frame>
+          <!--  <buttons:BindableButton Text=" Click Image Load Menu Page " Command="{Binding SplashScreenCommand}" /> -->
+            <Label Text=" Click Image to Load Menu Page " HorizontalOptions="CenterAndExpand" IsVisible="True" Margin="0,50,0,0"/>
+
+ 
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

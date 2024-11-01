@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MapleSugar.Pages.FilterPage"
+             xmlns:local="clr-namespace:MapleSugar.PageModels"
+             xmlns:Local1="clr-namespace:MapleSugar.Models" 
+             xmlns:buttons="clr-namespace:MapleSugar.Views.Buttons"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.BindingContext>
+        <local:FilterViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" HeightRequest="45" WidthRequest="100">
+            <Picker Title="Choose Sector" WidthRequest="300"
+                 x:Name="picker"
+                 SelectedItem="{Binding SelectedSectorFilter}">
+                <Picker.Items>
+                    <x:String>All</x:String>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <SearchBar Text="{Binding SearchText}" 
+                       HorizontalOptions="Fill"
+                        VerticalOptions="CenterAndExpand"
+                        Placeholder="Search ..."
+                        Keyboard="Numeric"/>
+
+            <buttons:BindableButton Text="Load" 
+                                        BindingContext="{Binding  Load_Button_Clicked}"
+                                        HorizontalOptions="CenterAndExpand" 
+                                        WidthRequest="100"
+                                        BackgroundColor="White" 
+                                        TextColor="Black" 
+                                        BorderWidth="1"  
+                                        BorderColor="Black" />
+        </StackLayout >
+        
+        <StackLayout Orientation="Horizontal" HeightRequest="115" BackgroundColor="{StaticResource PrimaryHeaderColor}"  >
+            <Label Text="Sector" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Tree #" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Sub Tree #" WidthRequest="33" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Tree Letter" WidthRequest="37" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Location" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Tube Tag"  WidthRequest="35" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Circum ference" WidthRequest="50" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Comb" HeightRequest="33" WidthRequest="38" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="     X     Y" WidthRequest="70" TextColor="White" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Container" HeightRequest="33" WidthRequest="50" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Lat Sec" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Lon Sec" Rotation="-90" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+            <Label Text="Tapped" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontAttributes="Bold"></Label>
+            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="EndAndExpand"/>
+        </StackLayout>
+        
+        <ListView  x:Name="FilterList"
+                   ItemsSource="{Binding Trees}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="Local1:FilterList">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer                            
+                             Command="{Binding BindingContext.OnEditCommand, Source={x:Reference FilterList}}"
+                             CommandParameter="{Binding .}"                                                    
+                             />
+                            </StackLayout.GestureRecognizers>
+                                <BoxView  WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                                <Label Text="{Binding Sector}" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold" 
+                                       WidthRequest="40"/>
+                                <BoxView  WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                                <Label Text="{Binding TreeNumber}" 
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       WidthRequest="43"/>
+                                <BoxView  WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                                <Label Text="{Binding SubTreeNumber}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       WidthRequest="38"/>
+                                <BoxView  WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                                <Label Text="{Binding TreeSubLetter}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       WidthRequest="40"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding TreeLocation}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="60"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding TreeTapTube}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="39"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding Circumference}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="53"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding TreeCombineWith}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="42"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding GridX}"  
+                                   HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="35"/>
+                            <Label Text="{Binding GridY}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="32"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding Container}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="55"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding LatSec}" 
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="48"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding LonSec}" 
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"                                       
+                                       FontAttributes="Bold"
+                                       WidthRequest="54"/>
+                            <BoxView WidthRequest="1" BackgroundColor="Black" HorizontalOptions="End"/>
+                            <Label Text="{Binding Tapped}"  
+                                    HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontAttributes="Bold"
+                                       WidthRequest="45"/>
+                           
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

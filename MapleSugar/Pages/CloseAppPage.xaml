@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"        
+             xmlns:buttons="clr-namespace:MapleSugar.Views.Buttons"
+             xmlns:local="clr-namespace:MapleSugar.PageModels"
+             x:Class="MapleSugar.Pages.CloseAppPage"
+            NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.BindingContext>
+        <local:CloseAppPageModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" HeightRequest="100" BackgroundColor="Transparent">
+            <Label Text="Close App?" HorizontalOptions="CenterAndExpand" FontSize="30" TextColor="Red" FontAttributes="Bold" Margin="0,100,0,0"/>
+            <StackLayout Orientation="Horizontal" Margin="0,40,0,0">                
+                    <buttons:BindableButton BindingContext="{Binding  Close_App_Clicked}" 
+                                        HeightRequest="120" WidthRequest="220" 
+                                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                                        BackgroundColor="LightGray" TextColor="Black" BorderWidth="2"  BorderColor="Black" />
+               
+            </StackLayout >
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage> 

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:pages="clr-namespace:MapleSugar.Pages"
+            x:Class="MapleSugar.Pages.MenuPage"
+            NavigationPage.HasNavigationBar="False"  
+            BarBackgroundColor="{StaticResource PrimaryHeaderColor}"
+            SelectedTabColor="White"
+            UnselectedTabColor="Gray">
+    <TabbedPage.Children>
+        <NavigationPage Title="Collection" >
+            <x:Arguments>
+                <pages:CollectionPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Tree Location">
+            <x:Arguments>
+                <pages:TreeInfoPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage Title="Check List">
+            <x:Arguments>
+                <pages:FilterPage/>
+            </x:Arguments>
+        </NavigationPage>
+        
+        <NavigationPage Title="History">
+            <x:Arguments>
+                <pages:HistoryPage />
+            </x:Arguments>
+        </NavigationPage>       
+        <NavigationPage Title="Sector1">
+                <x:Arguments>
+                    <pages:MapSector1Page />
+                </x:Arguments>
+            </NavigationPage>
+            <NavigationPage Title="Sector2">
+                <x:Arguments>
+                    <pages:MapSector2Page />
+                </x:Arguments>
+            </NavigationPage>
+            <NavigationPage Title="Sector3">
+                <x:Arguments>
+                    <pages:MapSector3Page />
+                </x:Arguments>
+            </NavigationPage>
+            <NavigationPage Title="Sector4">
+                <x:Arguments>
+                    <pages:MapSector4Page />
+                </x:Arguments>
+            </NavigationPage>
+            <NavigationPage Title="Close App" >
+                <x:Arguments>
+                    <pages:CloseAppPage />
+                </x:Arguments>
+            </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>

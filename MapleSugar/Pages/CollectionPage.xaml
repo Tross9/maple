@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:local="clr-namespace:MapleSugar.PageModels"
+            xmlns:buttons="clr-namespace:MapleSugar.Views.Buttons" 
+            x:Class="MapleSugar.Pages.CollectionPage"
+            NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.BindingContext>
+        <local:CollectionPageModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="45">
+                <Entry Placeholder="StatusMsg"  Text="{Binding StatusMsg}" FontSize="15"  Margin="150,0,0,0" 
+                       HorizontalTextAlignment="Center" TextColor="Red" HorizontalOptions="Center" WidthRequest="500"
+                           IsVisible="True"/>
+                <!-- 
+                <buttons:BindableButton BindingContext="{Binding  Close_App_Clicked}"
+                                        HorizontalOptions="EndAndExpand" 
+                                        BackgroundColor="White" TextColor="Black" BorderWidth="1"  BorderColor="Black" />
+                -->
+            </StackLayout>
+            <StackLayout BackgroundColor="{StaticResource PrimaryHeaderColor}"   >
+                <Label Text="Collection Data" HorizontalOptions="CenterAndExpand" FontSize="20"
+                       TextColor="White"/>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="tree #" TextColor="White" Text="{Binding TreeNumber}" FontAttributes="Bold" FontSize="40" Keyboard="Numeric" WidthRequest="80"  HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                    <Entry Placeholder="Sub #" TextColor="White" Text="{Binding SubTreeNumber}"  FontAttributes="Bold" FontSize="40" Keyboard="Numeric" WidthRequest="80" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <Entry Placeholder="Amt" TextColor="White" Text="{Binding CollectedAmount}"  FontAttributes="Bold" FontSize="40" Keyboard="Numeric" WidthRequest="80" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>                
+                <buttons:BindableButton BindingContext="{Binding SaveCollectionDataModel }"
+                                        HorizontalOptions="CenterAndExpand"  WidthRequest="300" 
+                                        BackgroundColor="White" />                                        
+                
+                <StackLayout Orientation="Horizontal" HeightRequest="55">
+                    <Label Text="Tree Number" HorizontalOptions="CenterAndExpand"   FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="SubTree Number" HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                           TextColor="White" />
+                    <Label Text="Collected Amount" HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                           TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+            <ListView ItemsSource="{Binding WorkCollectedItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding TreeNumber}"     
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding SubTreeNumber}"                               
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding CollectedAmount}"  
+                                       HorizontalOptions="CenterAndExpand"  FontAttributes="Bold"
+                                       VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout BackgroundColor="{StaticResource PrimaryHeaderColor}" Padding="10">
+                <Label Text="{Binding TotalCollected, StringFormat='Total Collected: {0}'}"
+                       HorizontalOptions="Center"  FontAttributes="Bold" FontSize="20"
+                       TextColor="White"/> 
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
